@@ -411,3 +411,211 @@ body {
   box-shadow: 0 4px 6px rgba(46, 163, 246, 0.3);
   font-family: var(--font-raleway);
 }
+
+/* ==========================================================================
+   SPLASH SCREEN & DOOR OPENING ANIMATION
+   ========================================================================== */
+
+body.splash-active {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 999999;
+  display: flex;
+  overflow: hidden;
+  background: transparent;
+  pointer-events: auto;
+}
+
+.splash-door {
+  position: absolute;
+  top: 0;
+  width: 50.1vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+.splash-door-left {
+  left: 0;
+  border-right: 1px solid rgba(255, 215, 0, 0.35);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.splash-door-right {
+  right: 0;
+  border-left: 1px solid rgba(255, 215, 0, 0.35);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.splash-door-left .splash-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+.splash-door-right .splash-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+.splash-center-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(255, 215, 0, 0.8), #b51b3f, rgba(255, 215, 0, 0.8), transparent);
+  z-index: 1000000;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+/* Door Opening state */
+.splash-screen.open .splash-door-left {
+  transform: translateX(-100%);
+}
+
+.splash-screen.open .splash-door-right {
+  transform: translateX(100%);
+}
+
+.splash-screen.open .splash-center-line {
+  opacity: 0;
+}
+
+.splash-screen.finished {
+  display: none !important;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   SMOOTH HOME SCREEN ENTRANCE & TEXT/IMAGE ANIMATIONS
+   ========================================================================== */
+
+/* Hero initial hidden state before splash doors open */
+.animate-hero {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.hero-quote.animate-hero {
+  transform: translateY(-30px);
+  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.names-main.animate-hero {
+  transform: scale(0.85) translateY(20px);
+  transition: opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1), transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.couple-image-container.animate-hero {
+  transform: translateY(50px) scale(0.95);
+  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1), transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.date-badge.animate-hero {
+  transform: translateX(40px) scale(0.85);
+  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Triggered when splash doors open */
+body.splash-opened .hero-quote.animate-hero {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+body.splash-opened .names-main.animate-hero {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition-delay: 0.35s;
+}
+
+body.splash-opened .couple-image-container.animate-hero {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.5s;
+}
+
+body.splash-opened .date-badge.animate-hero {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  transition-delay: 0.7s;
+}
+
+/* Heart animations */
+.dec-heart-left, .dec-heart-right {
+  animation: heartPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes heartPulse {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.15) rotate(4deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Scroll reveal animations for sections */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Micro-interactions on event cards & images */
+.event-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.event-icon, .couple-image, .location-pin {
+  transition: transform 0.5s ease;
+}
+
+.event-card:hover .event-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.btn-direction {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-direction:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 15px rgba(46, 163, 246, 0.45);
+}
