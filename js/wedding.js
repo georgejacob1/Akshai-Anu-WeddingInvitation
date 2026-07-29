@@ -1,6 +1,77 @@
 document.addEventListener("DOMContentLoaded", function () {
     // -------------------------------------------------------------
-    // 1. Splash Screen Door Opening Sequence (3 Seconds Display)
+    // 1. Handwriting Animation Setup for Main Names ("Akshai & Anu")
+    // -------------------------------------------------------------
+    const akshaiEl = document.getElementById("name-akshai");
+    const ampersandEl = document.getElementById("name-ampersand");
+    const anuEl = document.getElementById("name-anu");
+    const heartLeft = document.querySelector(".dec-heart-left");
+    const heartRight = document.querySelector(".dec-heart-right");
+
+    function createLetterSpans(element) {
+        if (!element) return [];
+        const text = element.textContent.trim();
+        element.innerHTML = "";
+        const spans = [];
+        for (let i = 0; i < text.length; i++) {
+            const span = document.createElement("span");
+            span.className = "letter-span";
+            span.textContent = text[i];
+            element.appendChild(span);
+            spans.push(span);
+        }
+        return spans;
+    }
+
+    const akshaiSpans = createLetterSpans(akshaiEl);
+    const ampersandSpans = createLetterSpans(ampersandEl);
+    const anuSpans = createLetterSpans(anuEl);
+
+    function triggerLetterWriting() {
+        // Start writing after quote and couple photo finish entering (~1.4s after doors open)
+        const delayStart = 1400;
+        const letterSpeed = 110; // 110ms per letter
+
+        // 1. Write "Akshai"
+        akshaiSpans.forEach(function (span, index) {
+            setTimeout(function () {
+                span.classList.add("write-in");
+            }, delayStart + (index * letterSpeed));
+        });
+
+        const akshaiEndTime = delayStart + (akshaiSpans.length * letterSpeed);
+
+        // Pop left heart when Akshai completes
+        setTimeout(function () {
+            if (heartLeft) heartLeft.classList.add("heart-pop");
+        }, akshaiEndTime);
+
+        // 2. Write "&" ampersand
+        const ampersandTime = akshaiEndTime + 150;
+        ampersandSpans.forEach(function (span, index) {
+            setTimeout(function () {
+                span.classList.add("write-in");
+            }, ampersandTime + (index * letterSpeed));
+        });
+
+        // 3. Write "Anu"
+        const anuStartTime = ampersandTime + 200;
+        anuSpans.forEach(function (span, index) {
+            setTimeout(function () {
+                span.classList.add("write-in");
+            }, anuStartTime + (index * letterSpeed));
+        });
+
+        const anuEndTime = anuStartTime + (anuSpans.length * letterSpeed);
+
+        // Pop right heart when Anu completes
+        setTimeout(function () {
+            if (heartRight) heartRight.classList.add("heart-pop");
+        }, anuEndTime);
+    }
+
+    // -------------------------------------------------------------
+    // 2. Splash Screen Door Opening Sequence (3 Seconds Display)
     // -------------------------------------------------------------
     const splashScreen = document.getElementById("splash-screen");
 
@@ -13,11 +84,17 @@ document.addEventListener("DOMContentLoaded", function () {
             document.body.classList.add("splash-opened");
             document.body.classList.remove("splash-active");
 
-            // Hide overlay completely after door transition (1.5s) completes
+            // Trigger letter writing animation for names
+            triggerLetterWriting();
+
+            // Hide overlay completely after door transition & handwriting animation completes
             setTimeout(function () {
                 splashScreen.classList.add("finished");
-            }, 1500);
+            }, 3500);
         }, 1000);
+    } else {
+        // If no splash screen, trigger writing animation directly
+        setTimeout(triggerLetterWriting, 500);
     }
 
     // -------------------------------------------------------------
