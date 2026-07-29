@@ -1,3 +1,11 @@
+function setViewportHeight() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+setViewportHeight();
+window.addEventListener('resize', setViewportHeight);
+window.addEventListener('orientationchange', setViewportHeight);
+
 document.addEventListener("DOMContentLoaded", function () {
     // -------------------------------------------------------------
     // 1. Handwriting Animation Setup for Main Names ("Akshai & Anu")
