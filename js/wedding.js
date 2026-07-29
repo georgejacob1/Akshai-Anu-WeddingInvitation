@@ -1,10 +1,19 @@
+let currentWidth = window.innerWidth;
 function setViewportHeight() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    let newWidth = window.innerWidth;
+    // Only update --vh on initial call or when window width changes (orientation change or desktop resize)
+    if (newWidth !== currentWidth || !document.documentElement.style.getPropertyValue('--vh')) {
+        currentWidth = newWidth;
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
 }
 setViewportHeight();
 window.addEventListener('resize', setViewportHeight);
-window.addEventListener('orientationchange', setViewportHeight);
+window.addEventListener('orientationchange', function () {
+    currentWidth = 0;
+    setViewportHeight();
+});
 
 document.addEventListener("DOMContentLoaded", function () {
     // -------------------------------------------------------------
