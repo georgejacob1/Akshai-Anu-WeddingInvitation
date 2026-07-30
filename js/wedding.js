@@ -181,5 +181,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Update every second
     setInterval(updateCountdown, 1000);
+
+    // -------------------------------------------------------------
+    // 4. Scroll Down Indicator Behavior
+    // -------------------------------------------------------------
+    const scrollDownBtn = document.getElementById("scroll-down-btn");
+
+    if (scrollDownBtn) {
+        scrollDownBtn.addEventListener("click", function () {
+            const target = document.querySelector(".invitation-container");
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 40) {
+                scrollDownBtn.classList.add("is-hidden");
+            } else {
+                scrollDownBtn.classList.remove("is-hidden");
+            }
+        }, { passive: true });
+    }
 });
 

@@ -896,4 +896,142 @@ body.splash-opened .date-badge.animate-hero {
   }
 }
 
+/* Animated Scroll Down Indicator */
+.scroll-down-indicator {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  /* background: rgba(255, 255, 255, 0.88); */
+  /* backdrop-filter: blur(10px); */
+  /* -webkit-backdrop-filter: blur(10px); */
+  /* border: 1px solid rgba(181, 27, 63, 0.22); */
+  border-radius: 24px;
+  padding: 6px 14px 4px;
+  /* box-shadow: 0 4px 18px rgba(133, 79, 53, 0.15), 0 2px 6px rgba(0, 0, 0, 0.06); */
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  animation: scrollFloat 2.2s infinite ease-in-out;
+}
+
+.scroll-down-indicator:hover {
+  transform: translateX(-50%) translateY(-3px) scale(1.04);
+  box-shadow: 0 6px 24px rgba(181, 27, 63, 0.25);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.scroll-down-indicator.is-hidden {
+  opacity: 0 !important;
+  transform: translateX(-50%) translateY(20px) !important;
+  pointer-events: none !important;
+  animation: none !important;
+}
+
+.scroll-text {
+  font-family: var(--font-raleway);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #000000;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.scroll-mouse-icon {
+  width: 14px;
+  height: 22px;
+  border: 2px solid #a56911;
+  border-radius: 9px;
+  position: relative;
+  margin-top: 1px;
+}
+
+.scroll-wheel {
+  width: 3px;
+  height: 5px;
+  background-color: #b51b3f;
+  border-radius: 2px;
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheelMove 1.8s infinite ease-in-out;
+}
+
+.scroll-chevrons {
+  height: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -1px;
+}
+
+.scroll-chevron-svg {
+  width: 13px;
+  height: 13px;
+  color: #b51b3f;
+}
+
+.chevron-second {
+  margin-top: -8px;
+  opacity: 0.5;
+  animation: chevronPulse 1.6s infinite ease-in-out 0.3s;
+}
+
+@keyframes scrollFloat {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
+}
+
+@keyframes scrollWheelMove {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  75% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
+  }
+
+  80% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes chevronPulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(-1px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(2px);
+  }
+}
+
 /* Responsive adjustments for Wedding Ceremony Card on narrow screens */
