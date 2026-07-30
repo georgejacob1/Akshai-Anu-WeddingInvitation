@@ -326,7 +326,7 @@ body {
 }
 
 .event-card {
-  width: 90%;
+  width: 100%;
   background: white;
   border: 1px solid #b3d6ff;
   border-radius: 12px;
@@ -370,21 +370,172 @@ body {
   font-weight: 500;
 }
 
-.how-to-reach {
-  /* margin-top: 30px; */
-  margin-bottom: 40px;
-  width: 100%;
+/* Wedding Ceremony Card Specific Styles */
+.event-card-ceremony {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+  padding-bottom: 20px;
+  min-height: 140px;
+}
+
+.ceremony-left {
+  position: relative;
+  width: 110px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.how-to-reach .event-card {
-  background-image: url('../assets/map.png');
+.ceremony-ribbon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 67px;
+  background: linear-gradient(to bottom, #d3a869, #ffd494);
+}
+
+.ceremony-icon-ring {
+  position: relative;
+  margin-top: 40px;
+  width: 75px;
+  height: 75px;
+  background: white;
+  border: 1px solid #eeb65d;
+  border-radius: 100px;
+  box-shadow: 0px 0px 10.9px -1px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.event-icon-ceremony {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.ceremony-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 22px;
+  padding-right: 15px;
+  width: 100%;
+}
+
+.event-title-ceremony {
+  font-family: var(--font-script);
+  font-size: 32px;
+  color: #7a3302;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ceremony-header-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.ceremony-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ceremony-divider {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.ceremony-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ceremony-info-row:last-child {
+  margin-bottom: 0;
+}
+
+.ceremony-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.ceremony-small-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #000;
+}
+
+.ceremony-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+}
+
+.ceremony-date-main {
+  margin: 0;
+  font-size: 16px;
+  color: #000;
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+.ceremony-date-sub {
+  margin: 0;
+  font-size: 14px;
+  color: #000;
+  font-family: var(--font-sans);
+}
+
+.ceremony-location {
+  margin: 0;
+  font-size: 14px;
+  color: #000;
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+.reach-title {
+ font-family: var(--font-raleway);
+  font-size: 28px;
+  color: #b57f59;
+  text-transform: uppercase;
+  margin: 0px;
+  padding: 0 0 20px 0;
+}
+
+.how-to-reach {
+  /* margin-top: 30px; */
+  /* margin-bottom: 40px; */
+  width: calc(100% + 40px);
+  margin-left: -20px;
+  margin-right: -20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-image: linear-gradient(to bottom, rgb(255 255 255 / 0%) 0%, rgba(255, 255, 255, 0.5) 20%, rgba(255, 255, 255, 0.5) 80%, rgb(255 255 255 / 8%) 100%), url(../assets/map.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* You can add a fallback background color or subtle overlay if the map is too bright */
+  /* padding: 40px 0; */
 }
 
 .location-pin-container {
@@ -407,9 +558,9 @@ body {
   background: var(--accent-blue);
   color: white;
   text-decoration: none;
-  padding: 12px 30px;
+  padding: 14px 50px;
   border-radius: 100px;
-  font-size: 15px;
+  font-size: 18px;
   margin-top: 15px;
   display: inline-block;
   box-shadow: 0 4px 6px rgba(46, 163, 246, 0.3);
@@ -725,5 +876,58 @@ body.splash-opened .date-badge.animate-hero {
 
   .date-badge .day {
     font-size: 38px;
+  }
+}
+
+/* Responsive adjustments for Wedding Ceremony Card on narrow screens */
+@media (max-width: 420px) {
+  .event-card-ceremony {
+    padding-bottom: 15px;
+    min-height: 120px;
+  }
+  .ceremony-left {
+    width: 80px;
+  }
+  .ceremony-ribbon {
+    width: 40px;
+    height: 55px;
+  }
+  .ceremony-icon-ring {
+    width: 60px;
+    height: 60px;
+    margin-top: 35px;
+  }
+  .event-icon-ceremony {
+    width: 35px;
+    height: 35px;
+  }
+  .ceremony-right {
+    padding-top: 15px;
+    padding-right: 10px;
+  }
+  .event-title-ceremony {
+    font-size: 26px;
+  }
+  .ceremony-divider {
+    margin-bottom: 10px;
+  }
+  .ceremony-divider svg {
+    max-width: 100%;
+    width: 130px;
+  }
+  .ceremony-info-row {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .ceremony-date-main {
+    font-size: 14px;
+  }
+  .ceremony-date-sub,
+  .ceremony-location {
+    font-size: 12px;
+  }
+  .ceremony-small-icon {
+    width: 16px;
+    height: 16px;
   }
 }

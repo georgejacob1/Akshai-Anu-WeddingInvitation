@@ -150,12 +150,48 @@
 
                     <h2 class="events-title reveal-on-scroll">Wedding Events</h2>
 
-                    <div class="event-card reveal-on-scroll">
-                        <h3 class="event-title">The Wedding Ceremony</h3>
-                        <img src="assets/ring.svg" alt="Rings" class="event-icon"
-                            onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23f1c40f\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><circle cx=\'9\' cy=\'12\' r=\'4\'/><circle cx=\'15\' cy=\'12\' r=\'4\'/></svg>'">
-                        <p class="event-date">24/8/26, Monday, 11:00 AM</p>
-                        <p class="event-location">St. Mary's Church, Kanchiyar</p>
+                    <div class="event-card event-card-ceremony reveal-on-scroll">
+                        <div class="ceremony-left">
+                            <div class="ceremony-ribbon"></div>
+                            <div class="ceremony-icon-ring">
+                                <img src="assets/ring.svg" alt="Rings" class="event-icon-ceremony"
+                                    onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23f1c40f\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><circle cx=\'9\' cy=\'12\' r=\'4\'/><circle cx=\'15\' cy=\'12\' r=\'4\'/></svg>'">
+                            </div>
+                        </div>
+                        <div class="ceremony-right">
+                            <div class="ceremony-header-group">
+                                <h3 class="event-title-ceremony">The Wedding Ceremony</h3>
+                                
+                                <div class="ceremony-divider">
+                                    <svg width="150" height="15" viewBox="0 0 150 15">
+                                        <line x1="0" y1="7.5" x2="65" y2="7.5" stroke="#d3a869" stroke-width="1" />
+                                        <path fill="#d3a869" d="M75 12c-0.4 0-4-2.8-4-4.8 0-1.2 0.8-2 2-2 0.8 0 1.6 0.4 2 1.2 0.4-0.8 1.2-1.2 2-1.2 1.2 0 2 0.8 2 2 0 2-3.6 4.8-4 4.8z" />
+                                        <line x1="85" y1="7.5" x2="150" y2="7.5" stroke="#d3a869" stroke-width="1" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="ceremony-info-container">
+                                <div class="ceremony-info-row">
+                                    <div class="ceremony-icon-wrapper">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ceremony-small-icon"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                    </div>
+                                    <div class="ceremony-text-wrapper">
+                                        <p class="ceremony-date-main">24 AUG 2026 - 11:00 AM</p>
+                                        <p class="ceremony-date-sub">Monday</p>
+                                    </div>
+                                </div>
+
+                                <div class="ceremony-info-row">
+                                    <div class="ceremony-icon-wrapper">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ceremony-small-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    </div>
+                                    <div class="ceremony-text-wrapper">
+                                        <p class="ceremony-location">St. Mary's Church, Kanchiyar</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="event-card reveal-on-scroll">
@@ -169,18 +205,16 @@
                 </div>
                 <!-- Location -->
                 <div class="how-to-reach reveal-on-scroll">
-                    <h2 class="events-title">How To Reach</h2>
+                    <h2 class="reach-title">How To Reach</h2>
 
-                    <div class="event-card" style="padding-bottom: 40px;">
-                        <div class="location-pin-container">
-                            <img src="assets/8dbd1d6ab5b60106ebdf53cc7c6d204449ccdacf.png" alt="Pin"
-                                class="location-pin"
-                                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23e74c3c\'><path d=\'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z\'/></svg>'">
-                        </div>
-                        <p class="event-location">St. Mary's Church, Kanchiyar</p>
-                        <a href="https://maps.google.com/?q=St.+Mary's+Church,+Kanchiyar" target="_blank"
-                            class="btn-direction">Get Direction</a>
+                    <div class="location-pin-container">
+                        <img src="assets/8dbd1d6ab5b60106ebdf53cc7c6d204449ccdacf.png" alt="Pin"
+                            class="location-pin"
+                            onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23e74c3c\'><path d=\'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z\'/></svg>'">
                     </div>
+                    <p class="event-location">St. Mary's Church, Kanchiyar</p>
+                    <a href="https://maps.google.com/?q=St.+Mary's+Church,+Kanchiyar" target="_blank"
+                        class="btn-direction">Get Direction</a>
                 </div>
 
             </div>
